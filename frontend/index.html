@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Historial clínico · Red de instituciones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="login" class="center">
+    <form id="loginForm" class="card narrow">
+      <h1>Historial clínico</h1>
+      <p class="muted">Inicie sesión con su usuario institucional</p>
+      <label>Usuario<input name="usuario" autocomplete="username" required></label>
+      <label>Contraseña<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="primary">Ingresar</button>
+      <p id="loginError" class="error"></p>
+      <details class="muted small"><summary>Usuarios de demostración</summary>
+        <p>Contraseña: <code>Clave123!</code><br>
+        <code>hospital.medico</code> · <code>clinica.medico</code> · <code>laboratorio.medico</code> · <code>pediatrico.medico</code><br>
+        (y <code>.admin</code> para el rol administrativo)</p></details>
+    </form>
+  </section>
+
+  <div id="app" hidden>
+    <header>
+      <div><strong id="instNombre"></strong></div>
+      <div><button id="camasBtn" class="small" hidden>Camas</button> <button id="pagosBtn" class="small" hidden>Pagos</button> <button id="facturacionBtn" class="small" hidden>Facturación</button> <span id="userInfo" class="muted"></span> <button id="logout" class="link">Salir</button></div>
+    </header>
+    <main>
+      <aside>
+        <div class="row">
+          <input id="buscar" placeholder="Buscar paciente…">
+          <button id="nuevo" class="primary">+ Nuevo</button>
+        </div>
+        <button id="inactivos" type="button" class="small toggle" aria-pressed="false">Mostrar archivados</button>
+        <ul id="lista"></ul>
+      </aside>
+      <section id="detalle"><p class="muted pad">Seleccione un paciente o registre uno nuevo.</p></section>
+    </main>
+  </div>
+
+  <dialog id="modal"><form method="dialog" id="modalForm"></form></dialog>
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
